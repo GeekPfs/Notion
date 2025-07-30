@@ -1,37 +1,185 @@
+/* Reset básico e corpo */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: black;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  margin: 0;
+  background-color: #000000;
+  color: #eee;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Blocos individuais do Notion com moldura e fundo */
+.notion-page-block,
+.notion-text-block,
+.notion-collection-view-block,
+.notion-code-block,
+.notion-callout,
+.notion-column,
+.notion-column-list,
+.notion-bulleted-list-block,
+.notion-numbered-list-block,
+.notion-to-do-block,
+.notion-toggle-block,
+.notion-quote-block {
+  background-color: #000; /* preto puro */
+  border: 2px solid #fff; /* moldura branca */
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Efeito sombra suave ao passar o mouse */
+.notion-page-block:hover,
+.notion-text-block:hover,
+.notion-collection-view-block:hover,
+.notion-code-block:hover,
+.notion-callout:hover,
+.notion-column:hover,
+.notion-column-list:hover,
+.notion-bulleted-list-block:hover,
+.notion-numbered-list-block:hover,
+.notion-to-do-block:hover,
+.notion-toggle-block:hover,
+.notion-quote-block:hover {
+  box-shadow: 0 0 12px 3px rgba(255 255 255 / 0.3);
+}
+
+/* Títulos estilizados */
+.notion-h1,
+.notion-h2,
+.notion-h3 {
+  color: #facc15; /* amarelo vibrante */
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 0 6px rgba(250, 204, 21, 0.7);
+}
+
+/* Parágrafos */
+.notion-text-block p {
+  font-size: 1.125rem;
+  letter-spacing: 0.015em;
+  color: #ddd;
   margin: 0;
 }
 
-/* Moldura branca em volta da página renderizada */
-.notion-frame {
-  max-width: 960px;
-  margin: 3rem auto;
-  padding: 2rem;
-  background-color: black;
-  border: 3px solid white;
-  border-radius: 0;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-/* Corrige elementos internos herdando fundo */
-.notion-frame .notion {
-  background-color: transparent !important;
-}
-
-/* Cabeçalhos */
-.notion-frame .notion-h1,
-.notion-frame .notion-h2,
-.notion-frame .notion-h3 {
-  color: white;
-}
-
-/* Código */
-.notion-frame .notion-code {
-  background: #111;
-  border: 1px solid white;
-  border-radius: 6px;
+/* Código formatado */
+.notion-code {
+  background-color: #111;
+  border-radius: 8px;
   padding: 1rem;
+  font-family: 'Fira Code', monospace, monospace;
+  font-size: 0.95rem;
+  color: #d4d4d4;
+  border: 1px solid #444;
+  overflow-x: auto;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem !important;
+}
+
+/* Links com efeito */
+a {
+  color: #facc15;
+  text-decoration: none;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  border-color: #facc15;
+  outline: none;
+}
+
+/* Imagens arredondadas com sombra */
+.notion-asset-wrapper,
+.notion-image {
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(250, 204, 21, 0.15);
+  border: 2px solid rgba(250, 204, 21, 0.3);
+  margin-bottom: 2rem;
+  max-width: 100%;
+  display: block;
+}
+
+/* Listas */
+.notion-list {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.notion-list-item {
+  margin-bottom: 0.5rem;
+}
+
+/* Citações */
+.notion-quote {
+  border-left: 4px solid #facc15;
+  color: #aaa;
+  font-style: italic;
+  padding-left: 1rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+/* Tabelas */
+.notion-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  border: 1px solid #444;
+}
+
+.notion-table th,
+.notion-table td {
+  border: 1px solid #555;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background-color: #121212;
+  color: #eee;
+}
+
+/* Scrollbar customizado */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #facc15;
+  border-radius: 4px;
+}
+
+/* Responsividade simples */
+@media (max-width: 640px) {
+  .notion-page-block,
+  .notion-text-block,
+  .notion-collection-view-block,
+  .notion-code-block,
+  .notion-callout,
+  .notion-column,
+  .notion-column-list,
+  .notion-bulleted-list-block,
+  .notion-numbered-list-block,
+  .notion-to-do-block,
+  .notion-toggle-block,
+  .notion-quote-block {
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .notion-text-block p {
+    font-size: 1rem;
+  }
 }
