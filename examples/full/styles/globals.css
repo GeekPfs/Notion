@@ -1,165 +1,143 @@
+/* Importação de fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 /* Reset básico */
 * {
   box-sizing: border-box;
-}
-
-body {
   margin: 0;
-  background-color: #fff;
-  color: #000;
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-}
-
-/* Container Notion */
-.notion {
-  max-width: 960px;
-  margin: 3rem auto;
   padding: 0;
 }
 
-/* Blocos com moldura, fundo branco e sombra */
-.notion-page-block,
-.notion-text-block,
-.notion-collection-view-block,
-.notion-code-block,
-.notion-callout,
-.notion-column,
-.notion-column-list,
-.notion-bulleted-list-block,
-.notion-numbered-list-block,
-.notion-to-do-block,
-.notion-toggle-block,
-.notion-quote-block,
-.notion-heading {
-  background-color: #fff;
-  border: 2px solid #000;
-  border-radius: 8px;
-  padding: 1.25rem 1.5rem;
-  margin: 0; /* zera espaço */
-  transition: box-shadow 0.3s ease;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Blocos colados: remove espaçamento vertical e horizontal */
-.notion * + .notion-page-block,
-.notion * + .notion-text-block,
-.notion * + .notion-collection-view-block,
-.notion * + .notion-code-block,
-.notion * + .notion-callout,
-.notion * + .notion-column,
-.notion * + .notion-column-list,
-.notion * + .notion-bulleted-list-block,
-.notion * + .notion-numbered-list-block,
-.notion * + .notion-to-do-block,
-.notion * + .notion-toggle-block,
-.notion * + .notion-quote-block,
-.notion * + .notion-heading {
-  margin-top: -2px; /* sobreposição de bordas superiores */
+/* Corpo principal */
+body {
+  background-color: #111;
+  color: #eee;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Para blocos lado a lado (colunas) também colarem */
-.notion-column + .notion-column {
-  margin-left: -2px;
+/* Grid minimalista */
+.notion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
 }
 
-/* Colunas */
-.notion-column-list {
-  display: flex;
-  gap: 0; /* sem espaço horizontal */
-  margin: 0;
+/* Containers arredondados e ocultos */
+.notion-grid .notion-block {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 1rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Cabeçalhos com # */
+/* Estado visível (após scroll) */
+.notion-grid .notion-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Títulos modernizados */
 .notion-h1,
 .notion-h2,
 .notion-h3 {
-  font-weight: 900;
-  font-size: 1.4rem;
-  margin: 0 0 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  color: #ffdd57;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
 }
 
-.notion-h1::before,
-.notion-h2::before,
-.notion-h3::before {
-  content: '#';
-  margin-right: 0.5rem;
-}
-
-/* Parágrafos */
+/* Parágrafos elegantes */
 .notion-text-block p {
   font-size: 1rem;
-  margin: 0;
-  color: #222;
+  color: #ddd;
+  margin-bottom: 0.75rem;
 }
 
-/* Botão roxo estilo retrô */
-.notion .button {
-  background: #d6b8ff;
-  color: #000;
-  font-weight: 600;
-  padding: 0.8rem 2rem;
-  border: 1.5px solid #000;
-  border-radius: 0;
-  font-size: 1rem;
-  cursor: pointer;
-  text-align: center;
-  transition: background 0.2s ease;
+/* Links com efeito de sublinhado animado */
+a {
+  color: #ffdd57;
+  text-decoration: none;
+  position: relative;
 }
-
-.notion .button:hover {
-  background: #b88eff;
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #ffdd57;
+  transition: width 0.3s ease;
 }
+a:hover::after { width: 100%; }
 
-/* Inputs */
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-textarea {
-  width: 100%;
+/* Blokus de código clean */
+.notion-code {
+  background-color: #222;
+  border-radius: 8px;
   padding: 0.75rem;
-  border: 1.5px solid #000;
-  background: #fff;
-  font-size: 1rem;
-  color: #000;
-  margin: 0;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+  overflow-x: auto;
 }
 
-/* Checkbox */
-input[type="checkbox"] {
-  accent-color: #000;
-}
-
-/* Imagens */
-.notion-image,
-.notion-asset-wrapper {
-  border: 1.5px solid #000;
-  border-radius: 0;
-  max-width: 100%;
-  display: block;
-  margin: 0;
-}
-
-/* Citações */
+/* Citações sutis */
 .notion-quote {
-  font-style: italic;
+  border-left: 4px solid #ffdd57;
   padding-left: 1rem;
-  border-left: 4px solid #000;
-  color: #444;
-  margin: 0;
+  color: #ccc;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+/* Tabelas minimalistas */
+.notion-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+.notion-table th,
+.notion-table td {
+  border: 1px solid #333;
+  padding: 0.75rem 1rem;
+  background-color: #1f1f1f;
+  color: #eee;
 }
 
 /* Responsivo */
-@media (max-width: 768px) {
-  .notion-column-list {
-    flex-direction: column;
+@media (max-width: 640px) {
+  .notion-grid {
+    padding: 0.75rem;
+    gap: 1rem;
   }
-
-  .notion-h1,
-  .notion-h2,
-  .notion-h3 {
-    font-size: 1.2rem;
-  }
+  .notion-text-block p { font-size: 0.95rem; }
 }
+
+/* Script sugerido (adicione antes de </body>) */
+/*
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const blocks = document.querySelectorAll('.notion-grid .notion-block');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    blocks.forEach(b => observer.observe(b));
+  });
+</script>
+*/
