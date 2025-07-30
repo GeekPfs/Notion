@@ -2,7 +2,46 @@
   box-sizing: border-box;
 }
 
-body {
-  padding: 0;
-  margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap');
+
+body,
+.notion-frame,
+.notion-scroller,
+.notion {
+  background-color: #000 !important;
+  color: #fff !important;
+  font-family: 'Urbanist', sans-serif !important;
+  font-weight: 300 !important;
+}
+
+.notion * {
+  color: inherit !important;
+  background: #000 !important;
+  font-family: 'Urbanist', sans-serif !important;
+  font-weight: 300 !important;
+}
+
+h1,
+.notion-heading.notion-heading-1 {
+  font-family: 'Anton', sans-serif !important;
+  font-size: 3rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 400 !important;
+}
+
+h2,
+h3,
+.notion-heading.notion-heading-2,
+.notion-heading.notion-heading-3 {
+  font-style: italic !important;
+  font-weight: 300 !important;
+  font-size: 1.5rem !important;
+}
+
+.notion-callout {
+  border: 1px solid #fff !important;
+  border-radius: 0.5rem !important;
+  padding: 1rem !important;
 }
