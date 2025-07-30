@@ -1,27 +1,28 @@
-/* Reset básico e corpo */
+/* Reset e base */
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background-color: #fff;
+  background: #fff;
   color: #000;
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
 }
 
-/* Container geral com moldura */
+/* Container principal */
 .notion {
   max-width: 960px;
   margin: 3rem auto;
-  padding: 2rem;
   background: #fff;
   border: 1.5px solid #000;
-  box-shadow: 0 0 0 2px #000;
+  border-collapse: collapse;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Blocos com caixa */
+/* Blocos sem espaçamento entre si */
 .notion-page-block,
 .notion-text-block,
 .notion-column,
@@ -29,25 +30,38 @@ body {
 .notion-callout,
 .notion-heading,
 .notion-quote-block {
-  background: #fff;
-  border: 1.5px solid #000;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-radius: 0;
+  border-top: 1.5px solid #000;
+  padding: 1.25rem;
 }
 
-/* Grade de colunas */
+/* Remove margens entre blocos */
+.notion-page-block:first-child,
+.notion-text-block:first-child {
+  border-top: none;
+}
+
+.notion-page-block:last-child,
+.notion-text-block:last-child {
+  border-bottom: none;
+}
+
+/* Grade de colunas contínua */
 .notion-column-list {
   display: flex;
-  gap: 2rem;
-  margin: 2rem 0;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1.5px solid #000;
+  border-bottom: 1.5px solid #000;
 }
 
 .notion-column {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  padding: 1.25rem;
+  border-left: 1.5px solid #000;
+}
+
+.notion-column:first-child {
+  border-left: none;
 }
 
 /* Títulos com hashtag */
@@ -56,10 +70,9 @@ body {
 .notion-h3 {
   font-weight: 900;
   font-size: 1.4rem;
-  margin: 0 0 1rem;
   text-transform: uppercase;
+  margin: 0 0 0.5rem;
   letter-spacing: 0.03em;
-  position: relative;
 }
 
 .notion-h1::before,
@@ -70,46 +83,47 @@ body {
   color: #000;
 }
 
-/* Parágrafos */
+/* Texto padrão */
 .notion-text-block p {
-  font-size: 1rem;
   margin: 0;
-  color: #222;
+  font-size: 1rem;
+  color: #111;
 }
 
-/* Botão roxo estilo retrô */
+/* Botões */
 .notion .button {
+  display: inline-block;
   background: #d6b8ff;
-  color: #000;
-  font-weight: 600;
-  padding: 0.8rem 2rem;
   border: 1.5px solid #000;
-  border-radius: 0;
+  padding: 0.75rem 2rem;
+  font-weight: bold;
   font-size: 1rem;
+  color: #000;
   cursor: pointer;
   text-align: center;
   transition: background 0.2s ease;
+  border-radius: 0;
 }
 
 .notion .button:hover {
   background: #b88eff;
 }
 
-/* Inputs simulados */
+/* Inputs */
 input[type="text"],
 input[type="tel"],
 input[type="email"],
 textarea {
   width: 100%;
   padding: 0.75rem;
-  margin-bottom: 1rem;
   border: 1.5px solid #000;
   background: #fff;
   font-size: 1rem;
   color: #000;
+  margin: 0 0 1rem;
 }
 
-/* Checkboxes simples */
+/* Checkbox */
 input[type="checkbox"] {
   accent-color: #000;
 }
@@ -118,42 +132,16 @@ input[type="checkbox"] {
 .notion-image,
 .notion-asset-wrapper {
   border: 1.5px solid #000;
-  border-radius: 0;
   max-width: 100%;
-  margin-bottom: 1.5rem;
   display: block;
 }
 
-/* Citações */
+/* Citação */
 .notion-quote {
-  font-style: italic;
-  padding-left: 1rem;
   border-left: 4px solid #000;
-  color: #444;
-  margin: 1rem 0;
-}
-
-/* Rodapé simulado */
-.footer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
-  border-top: 1px solid #000;
-  padding-top: 1rem;
-  margin-top: 3rem;
-}
-
-/* Links */
-a {
-  color: #000;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
-}
-
-a:hover {
-  border-color: #000;
+  padding-left: 1rem;
+  color: #333;
+  font-style: italic;
 }
 
 /* Responsivo */
@@ -163,12 +151,15 @@ a:hover {
   }
 
   .notion {
-    padding: 1.5rem;
+    padding: 0;
   }
 
-  .notion-h1,
-  .notion-h2,
-  .notion-h3 {
-    font-size: 1.2rem;
+  .notion-column {
+    border-left: none !important;
+    border-top: 1.5px solid #000;
+  }
+
+  .notion-column:first-child {
+    border-top: none;
   }
 }
