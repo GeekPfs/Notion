@@ -173,15 +173,28 @@ export function NotionPage({
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div className="notion-frame">
-  <NotionRenderer
-    recordMap={recordMap}
-    fullPage={true}
-    darkMode={false}
-    ...
-  />
-</div>
+      <NotionRenderer
+        recordMap={recordMap}
+        fullPage={true}
+        darkMode={false}
+        rootDomain={rootDomain}
+        rootPageId={rootPageId}
+        previewImages={previewImagesEnabled}
+        components={{
+          // NOTE (transitive-bullshit 3/12/2023): I'm disabling next/image for this repo for now because the amount of traffic started costing me hundreds of dollars a month in Vercel image optimization costs. I'll probably re-enable it in the future if I can find a better solution.
+          // nextLegacyImage: Image,
+          nextLink: Link,
+          Code,
+          Collection,
+          Equation,
+          Pdf,
+          Modal,
+          Tweet
+        }}
 
+        // NOTE: custom images will only take effect if previewImages is true and
+        // if the image has a valid preview image defined in recordMap.preview_images[src]
+      />
     </>
   )
 }
