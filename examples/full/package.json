@@ -16,7 +16,7 @@
     "classnames": "catalog:",
     "ky": "catalog:",
     "lqip-modern": "catalog:",
-    "next": "catalog:",
+    "next": "15.5.8",
     "notion-client": "workspace:*",
     "notion-compat": "workspace:*",
     "notion-types": "workspace:*",

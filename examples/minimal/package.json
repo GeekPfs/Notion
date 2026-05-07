@@ -12,7 +12,7 @@
     "test:lint": "eslint ."
   },
   "dependencies": {
-    "next": "catalog:",
+    "next": "15.5.8",
     "notion-client": "workspace:*",
     "notion-types": "workspace:*",
     "notion-utils": "workspace:*",
